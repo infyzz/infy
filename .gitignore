@@ -1,0 +1,16 @@
+/log
+/db
+/node_modules
+/apidoc
+/react_api_doc
+/笔记.rtf
+/config/mysql.config.js
+/client/nuxt-dist
+/client/nuxt-build
+/public/upload/
+/.idea/
+/dist
+/ecosystem.config.js
+/.env.development
+/.env.production
+*.DS_Store

@@ -1,0 +1,90 @@
+@import "./rest";
+@import "./_color.scss";
+// @import './fonts/iconfont.css';
+body{
+    background: $main_bg;
+}
+
+.shadow{
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+}
+.error-layout{
+    background: #f8f8f8;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/* 侧边栏 */
+.aside-section{
+    flex: 0 0 300px;
+    margin-left: 20px;
+    .section-widget{
+        background: #ffffff;
+        margin-bottom: 15px; 
+        // @extend .shadow;
+        /* tags */
+        &__tags,&__friendlinks{
+            .section-widget__body{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 15px;
+                font-size: 12px;
+                a{
+                    margin-right: 12px;
+                    margin-bottom: 12px;
+                    background-color:#f3f6f3; 
+                    transition: 0.2s ease-in-out;
+                    cursor: pointer;
+                    height: 30px;
+                    color: inherit;
+                    line-height: 30px;
+                    padding-left: 22px;
+                    padding-right: 22px;
+                    &:hover{
+                        background: darken(#f3f6f3 ,10%);
+                    }
+                }
+            }
+            
+        }
+        // &__friendlinks{
+            
+        // }
+        &__header{
+            border-bottom:1px solid hsla(0,0%,58.8%,.1);
+            display: flex;
+            justify-content: space-between;
+            height: 45px;
+            align-items: center;
+            padding:0 15px;
+            a{
+                color: $color_link;
+                font-size: 12px;
+            }
+            .title{
+                flex: 1;
+                font-size: 14px;
+                padding-right: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        &__body{
+            min-height: 100px;
+        }
+    }
+}
