@@ -1,11 +1,23 @@
-import NuxtConfiguration from '@nuxt/config'
-import path from 'path'
-import './src/utils/Env'
+import path from 'path';
+import './src/utils/Env';
+
 const buildDir: string =
     process.env.NODE_ENV === 'development'
         ? path.join(__dirname, './client/nuxt-dist')
-        : path.join(__dirname, './client/nuxt-build')
-const config: NuxtConfiguration = {
+        : path.join(__dirname, './client/nuxt-build');
+
+console.log({buildDir});
+
+export default {
+    buildModules: [
+        [
+            '@nuxt/typescript-build',
+            {
+                typeCheck: true,
+                ignoreNotFoundWarnings: true
+            }
+        ]
+    ],
     loadingIndicator: {
         name: 'circle',
         color: '#3B8070',
@@ -58,18 +70,17 @@ const config: NuxtConfiguration = {
     },
     build: {
         publicPath: '/app/',
-        extractCSS: true,
-        extend(config, { isDev, isServer, isClient }) {
-            if (isDev) {
-                config.devtool = 'eval-source-map'
-                // config.module.rules.push({
-                //   enforce: 'pre',
-                //   test: /\.(js|vue)$/,
-                //   loader: 'eslint-loader',
-                //   exclude: /(node_modules)/
-                // })
-            }
-        }
+        extractCSS: true
+        // extend(config, { isDev, isServer, isClient }) {
+        //     if (isDev) {
+        //         config.devtool = 'eval-source-map';
+        //         // config.module.rules.push({
+        //         //   enforce: 'pre',
+        //         //   test: /\.(js|vue)$/,
+        //         //   loader: 'eslint-loader',
+        //         //   exclude: /(node_modules)/
+        //         // })
+        //     }
+        // }
     }
-}
-export default config
+};

@@ -8,12 +8,12 @@
   },
   "scripts": {
     "doc": "apidoc -i api -o /Volumes/dev/website-project/react_api_doc/src/data -t ./apidoc/template",
-    "build:server": "tsc --inlineSourceMap true",
+    "build:server": "tsc",
     "start-build": "node build/app.js",
     "start": "nodemon --watch './src/*' -e ts --exec 'ts-node' app.ts",
     "start:production": "NODE_ENV=production  nodemon --watch './src/*' -e ts --exec 'ts-node' app.ts",
     "start2": " nodemon -e ts,js -w ./ app.ts",
-    "build": "NODE_ENV=production NUXT_ENV_BASE_URL=https://www.aa0.cn nuxt build --modern=server"
+    "build": "NODE_ENV=production NUXT_ENV_BASE_URL=https://www.aa0.cn nuxt-ts build --modern=server"
   },
   "nodemonConfig": {
     "ignore": [
@@ -25,6 +25,7 @@
     "delay": "500"
   },
   "dependencies": {
+    "@nuxt/typescript-runtime": "^0.1.5",
     "@nuxtjs/axios": "^5.4.1",
     "body-parser": "~1.18.2",
     "cheerio": "^1.0.0-rc.2",
@@ -32,6 +33,7 @@
     "core-js": "^2.6.5",
     "dotenv": "^8.0.0",
     "gitalk": "^1.5.0",
+    "highlight.js": "^9.15.10",
     "jwt-simple": "^0.5.1",
     "koa": "^2.6.2",
     "koa-body": "^4.0.8",
@@ -62,7 +64,7 @@
   },
   "devDependencies": {
     "@nuxt/config": "^2.8.0",
-    "@nuxt/typescript": "^2.8.0",
+    "@nuxt/typescript-build": "^0.2.6",
     "@types/dotenv": "^6.1.1",
     "@types/fs-extra": "^7.0.0",
     "@types/glob": "^7.1.1",

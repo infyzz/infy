@@ -1,6 +1,6 @@
 <template>
     <article class="article-content wrapper">
-        <main class="article-main">
+        <main class="article-main" v-highlight>
             <div class="article-head">
                 <h2>{{ article.title }}</h2>
                 <div class="meta">
@@ -14,9 +14,9 @@
             <div class="article-body"
                  v-html='article.content'></div>
             <!-- 评论 -->
-            <no-ssr>
+            <client-only>
                 <app-comment />
-            </no-ssr>
+            </client-only>
         </main>
         <aside class="aside-section">
             <div class="section-widget section-widget__toc"
@@ -29,7 +29,9 @@
 
 <script>
 import Markdown from "~/plugins/markdown";
-import 'prismjs/themes/prism-tomorrow.css'
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/androidstudio.css';
 let oToc = null;
 let oTitles = null;
 let oLis = null;
@@ -70,6 +72,7 @@ const bodyScroll = function () {
     } catch (error) { }
 }
 
+
 export default {
     components: {
         'app-comment': () => import(/*webpackChunkName: "app-comment"*/'~/components/public/AppComment')
@@ -92,7 +95,9 @@ export default {
             }else{
                 error({ statusCode: 404, message: data.message })
             }
-        } catch (error) {
+        } catch (err) {
+            console.log(err);
+            
             error({ statusCode: 404, message: 'Post not found' })
         }
         return {
@@ -108,7 +113,16 @@ export default {
         oLis = document.querySelectorAll('#toc li');
         oLis[0].classList.add('active');
         bodyScroll();
-        window.addEventListener('scroll', bodyScroll, false);
+        window.addEventListener('scroll', bodyScroll, false);        
+    },
+    directives:{
+        highlight:{
+            inserted: function (el) {
+                el.querySelectorAll('.js-hilight code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            }
+        }
     },
     destroyed () {
         window.removeEventListener('scroll', bodyScroll, false);
@@ -127,6 +141,11 @@ export default {
                     name: "keywords",
                     content: "昔年博客"
                 }
+            ],
+            script:[
+                {
+                    src:'https://cdn.bootcss.com/prism/9000.0.1/prism.min.js'
+                }
             ]
         };
     }
@@ -135,6 +154,11 @@ export default {
 <style lang="scss">
 .article-main {
     @import '../../assets/_article-body.scss';
+}
+code {
+    background: #eee;
+    padding: 3px;
+    color: #847052;
 }
 .section-widget__toc {
     width: 260px;

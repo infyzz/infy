@@ -5,19 +5,6 @@
     font-size: 15px;
     overflow-x: hidden;
     font-size: 14px;
-    code {
-        font-size: 1rem;
-        padding: 0.26rem 0.53em;
-        word-break: break-word;
-        color: #4e5980;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-        overflow-x: auto;
-        background-color: #fff5f5;
-        color: #ff502c;
-        font-size: 0.87em;
-        padding: 0.065em 0.4em;
-    }
     a {
         color: #0269c8;
         border-bottom: 1px solid #d1e9ff;
@@ -28,8 +15,6 @@
     }
     p {
         line-height: 1.9;
-        margin-top: 22px;
-        margin-bottom: 22px;
     }
     hr {
         border: none;
@@ -85,13 +70,13 @@
         line-height: 1.93rem;
         overflow: auto;
     }
-    // code,
-    // pre {
-    //     font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-    // }
+    code,
+    pre {
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+    }
     pre > code {
-        font-size: 1rem;
-        padding: 0.67rem 1.3rem;
+        font-size: 13px;
+        padding: 10px;
         margin: 0;
         word-break: normal;
         display: block;
@@ -142,48 +127,6 @@
     ol li,
     ul li {
         margin-bottom: 0.6rem;
-    }
-    code[class*='language-'],
-    pre[class*='language-'] {
-        background: #2d2d2d;
-    }
-    pre[class*='language-'] {
-    padding: 0;
-    }
-    pre > code {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        font-size: 12px;
-        padding: 15px 12px;
-    }
-    pre > code.hljs[lang] {
-        padding: 18px 15px 12px;
-    }
-    pre > code.hljs[lang]:before {
-        content: attr(lang);
-        position: absolute;
-        right: 15px;
-        top: 2px;
-        color: hsla(0, 0%, 54.9%, 0.8);
-    }
-    pre > code.hljs[lang][lang='bash']:before {
-        content: '';
-    }
-    pre > code.copyable.hljs[lang]:before {
-        right: 70px;
-    }
-    pre > code.copyable .copy-code-btn:hover {
-        color: #8c8c8c;
-    }
-    pre > code.copyable .copy-code-btn {
-        position: absolute;
-        top: 6px;
-        right: 15px;
-        font-size: 12px;
-        line-height: 1;
-        cursor: pointer;
-        color: hsla(0, 0%, 54.9%, 0.8);
-        transition: color 0.1s;
     }
     figure figcaption {
         margin-top: 2px;
@@ -314,6 +257,11 @@
     h1 + :not(.heading) {
         margin-top: 25px;
     }
+    .hljs{
+        border-radius: 0;
+        line-height: 1.7;
+        // background: #2d2d2d;
+    }
 }
 
 @media (max-width: 720px) {
@@ -330,21 +278,12 @@
             font-size: 18px;
         }
 
-        pre > code .copy-code-btn {
-            display: none;
-        }
-
-        pre > code.hljs[lang]:before {
-            top: 2px;
-            right: 15px;
-        }
+     
     }
 }
 
 @media (max-width: 720px) {
     .article-body {
-        pre > code.copyable.hljs[lang]:before {
-            right: 1rem;
-        }
+      
     }
 }

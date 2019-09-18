@@ -2,9 +2,9 @@
     <div class="main-guestbook wrapper">
         <main class="main-guestbook">
             <!-- 评论 -->
-            <no-ssr>
+            <client-only>
                 <app-comment />
-            </no-ssr>
+            </client-only>
         </main>
     </div>
 </template>
