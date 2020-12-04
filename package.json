@@ -33,7 +33,7 @@
     "core-js": "^2.6.5",
     "dotenv": "^8.0.0",
     "gitalk": "^1.5.0",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^10.4.1",
     "jwt-simple": "^0.5.1",
     "koa": "^2.6.2",
     "koa-body": "^4.0.8",
