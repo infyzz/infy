@@ -59,7 +59,7 @@
     "superagent-charset": "^1.2.0",
     "tracer": "^0.9.8",
     "uuid": "^3.1.0",
-    "validator": "^9.2.0",
+    "validator": "^13.7.0",
     "vue-function-api": "^2.2.0"
   },
   "devDependencies": {
